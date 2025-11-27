@@ -11,7 +11,7 @@ function App() {
   const [prediction, setPrediction] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [retrainFiles, setRetrainFiles] = useState([]);
+
   const [retrainMessage, setRetrainMessage] = useState(null);
 
   const handleImageSelect = async (file) => {
@@ -45,7 +45,6 @@ function App() {
 
   const handleRetrainUpload = async (e) => {
     const files = Array.from(e.target.files);
-    setRetrainFiles(files);
 
     if (files.length === 0) return;
 
@@ -81,7 +80,6 @@ function App() {
       setIsLoading(false);
       setTimeout(() => {
         setShowRetrain(false);
-        setRetrainFiles([]);
         setRetrainMessage(null);
       }, 3000);
     }
