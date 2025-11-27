@@ -3,20 +3,14 @@ set -e
 
 echo "🔧 Starting build process..."
 
-# Upgrade pip
-echo "📦 Upgrading pip..."
-pip install --upgrade pip
-
-# Install Python dependencies
-echo "📦 Installing Python packages..."
-pip install -r requirements.txt
-
 # Download model from Google Drive
 echo "📥 Downloading model from Google Drive..."
 mkdir -p models
 
-# Use gdown for more reliable Google Drive downloads
+# Install gdown if not already installed
 pip install gdown
+
+# Download the model
 gdown --id 16H4qASr6bNMnm34PVy85KfanxySBk88s -O models/MobileNetV2_retrained_best.h5
 
 # Verify model was downloaded
