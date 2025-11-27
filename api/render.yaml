@@ -6,6 +6,10 @@ services:
     plan: free
     
     buildCommand: |
+      echo "📁 Current directory contents:"
+      ls -la
+      echo "📁 Looking for requirements.txt:"
+      find . -name "requirements.txt"
       pip install --upgrade pip
       pip install -r requirements.txt
       
