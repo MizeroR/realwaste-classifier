@@ -75,7 +75,8 @@ def home():
             '/health': 'GET - Health check and uptime',
             '/predict': 'POST - Make prediction (send image file)',
             '/stats': 'GET - API statistics',
-            '/classes': 'GET - List all classes'
+            '/classes': 'GET - List all classes',
+            '/retrain': 'POST - Retrain model with new images'
         }
     })
 
