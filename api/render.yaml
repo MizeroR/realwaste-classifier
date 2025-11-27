@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: waste-classifier-api
+    env: python
+    region: frankfurt
+    plan: free
+    
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r api/requirements.txt
+      
+      echo "📥 Downloading model from Google Drive..."
+      mkdir -p models
+      curl -L -o models/model.h5 "https://drive.google.com/uc?export=download&id=16H4qASr6bNMnm34PVy85KfanxySBk88s"
+      echo "✅ Model downloaded."
+
+    startCommand: gunicorn -w 1 -b 0.0.0.0:8000 api.app:app
