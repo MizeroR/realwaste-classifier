@@ -199,6 +199,34 @@ def stats():
         'timestamp': datetime.now().isoformat()
     })
 
+@app.route('/retrain', methods=['POST'])
+def retrain_model():
+    """Simple endpoint to acknowledge retrain request"""
+    try:
+        # Get uploaded files
+        if 'images' not in request.files:
+            return jsonify({
+                'success': False,
+                'error': 'No images provided'
+            }), 400
+        
+        files = request.files.getlist('images')
+        
+        # For now, just return success with file count
+        # In production, you would actually retrain here
+        return jsonify({
+            'success': True,
+            'message': 'Retraining endpoint working!',
+            'images_received': len(files),
+            'note': 'This is a demo endpoint. Full retraining would happen here.'
+        })
+    
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
 # ============================================
 # RUN APP
 # ============================================
