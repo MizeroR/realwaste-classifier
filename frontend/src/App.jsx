@@ -6,14 +6,13 @@ import { predictWaste } from "./services/api";
 import "./App.css";
 
 function App() {
-  const [selectedImage, setSelectedImage] = useState(null);
+
   const [imagePreview, setImagePreview] = useState(null);
   const [prediction, setPrediction] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleImageSelect = async (file) => {
-    setSelectedImage(file);
     setError(null);
 
     // Create preview
@@ -37,7 +36,6 @@ function App() {
   };
 
   const handleReset = () => {
-    setSelectedImage(null);
     setImagePreview(null);
     setPrediction(null);
     setError(null);
